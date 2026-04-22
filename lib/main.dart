@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab3_app_shmal/gradient_container.dart';
 
 void main(){
-  runApp(MaterialApp(
+  runApp(
+    MaterialApp(
     debugShowCheckedModeBanner: false,
     home: (Scaffold(
-      body: Container(
+      body: GradientContainer(),
+      )),
+    ),
+  );
+}
+
+class GradientContainer extends StatelessWidget {
+  const GradientContainer({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return  Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -20,8 +32,6 @@ void main(){
           child: Text(
             "Hello world!"),
             ),
-          ),
-        )),
-    ),
-  );
+          );
+  }
 }
