@@ -6,7 +6,6 @@ class StyledText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      "ПАШЕЛ НАФИГ",
       style: TextStyle(
         color: Colors.white,
         fontSize: 32,
