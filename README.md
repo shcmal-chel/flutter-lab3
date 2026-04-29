@@ -1,17 +1,78 @@
-# flutter_lab3_app_shmal
+# Лабораторная работа №3. Flutter: структура UI и компонентный подход
 
-A new Flutter project.
+### Цель работы:
 
-## Getting Started
+Научиться строить UI через дерево виджетов, создавать собственные виджеты-классы, разбивать код на файлы и передавать данные через параметры.
 
-This project is a starting point for a Flutter application.
+## Необходимые инструменты:
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter 3.35+
+- VS Code (рекомендуется для лабораторной работы), либо IntelliJ IDEA / Android Studio с установленным плагином Flutter
+- Git
+- Браузер Google Chrome / Edge
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Теоретическая часть.
+
+### StatefulWidget и управление состоянием
+
+Данная проблема заключается в том, что мы используем виджет StatelessWidget, который не сохраняет состояние.
+
+### Почему StatelessWidget больше не хватает
+
+До сих пор все наши виджеты были StatelessWidget — они отрисовываются один
+раз и не меняются. Это отлично работает для статичного UI: текст, картинки, фон.
+Но наше приложение должно реагировать на нажатие кнопки и менять картинки.
+Виджет должен помнить своё текущее состояние и уметь его менять.
+Для этого во Flutter есть StatefulWidget.
+
+Сравним два подхода:
+
+|                    | StatelessWidget         | StatefulWidget                               |
+| ------------------ | ----------------------- | -------------------------------------------- |
+| Состояние          | Нет                     | Есть — хранится в объекте State              |
+| Перерисовка        | Только при пересоздании | По вызову setState()                         |
+| Когда использовать | Статичный UI            | UI который меняется по действию пользователя |
+| Аналог в Compose   | Composable без state    | remember { mutableStateOf() }                |
+
+**StatefulWidget** состоит из двух классов:
+
+- сам виджет — описывает конфигурацию
+- объект State — хранит состояние и содержит метод build()
+
+---
+
+## Примеры кода
+
+```dart
+@override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [color1, color2, color3],
+          begin: startAlignment,
+          end: endAlignment,
+        ),
+      ),
+      child: Center(
+        child: DiceRoller()
+      ),
+    );
+  }
+```
+
+### Автор
+
+**Выполнил:** Шмаль Иван Максимович
+**Группа:** ИСП - 232
+**Дата:** 29.04.26
+
+### Лицензия
+
+Проект создан в учебных целях.
+
+## Ссылка на репозиторий
+
+[GitHub Repository](https://github.com/shcmal-chel/flutter-lab3)
